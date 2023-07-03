@@ -284,6 +284,7 @@ Namespace mytest_vb
             If primeFactorsCache.ContainsKey(x) Then
                 Return primeFactorsCache(x)
             End If
+            Dim orig As Int32 = x
             Dim rtn As List(Of Int32) = New List(Of Int32)()
             Try
                 'if (x > 1048577)
@@ -322,8 +323,8 @@ Namespace mytest_vb
                 Throw
             End Try
             rtn.Reverse()
-            primeFactorsCache(x) = rtn.ToArray()
-            Return primeFactorsCache(x)
+            primeFactorsCache(orig) = rtn.ToArray()
+            Return primeFactorsCache(orig)
         End Function
 
         Public Function myTestLcm(arr As Int32()) As Long
@@ -795,6 +796,7 @@ Namespace mytest_vb
             Dim expSigned As Boolean = False
             Dim shifts As Int32 = 0
             Dim floatLen As Int32 = 0
+            Dim orig As Double = x
             Try
                 If 0 = x Then
                     Return "0"
@@ -850,8 +852,8 @@ Namespace mytest_vb
             End Try
 
             Return (x * sign).ToString("F" + floatLen.ToString()) + "*10" + myLibToSup(IIf(expSigned, "-", "") + shifts.ToString())
-            'StandardFormCache[x] = (x * sign).ToString("F" + floatLen.ToString()) + "*10" + myLibToSup((expSigned ? "-" : "") + shifts.ToString());
-            'Return StandardFormCache[x];
+            'StandardFormCache[orig] = (x * sign).ToString("F" + floatLen.ToString()) + "*10" + myLibToSup((expSigned ? "-" : "") + shifts.ToString());
+            'Return StandardFormCache[orig];
 
         End Function
     End Class
